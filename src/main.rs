@@ -1,3 +1,5 @@
+use ::std::collections::HashMap;
+
 fn main() {
     println!("Hello, world!");
     print!("Hello Again!\n");
@@ -206,10 +208,8 @@ fn main() {
 
     let clone_some_string = some_string.clone();
 
-
     println!("{}", some_string);
     println!("{}", clone_some_string);
-
 
     // Borrowing
     // Using a value without taking ownership of it
@@ -217,10 +217,9 @@ fn main() {
     let some_text = String::from("Some text");
     let borrowed_text = &some_text;
 
-
     println!("{}", some_text);
     println!("{}", borrowed_text);
-    
+
     //Mutable reference
 
     let mut some_other_text = String::from("Some other text");
@@ -230,5 +229,92 @@ fn main() {
 
     println!("{}", borrowed_some_other_text);
 
+    // Data Structures
+    // Arrays
+    let mut numbers = [1, 2, 3, 4, 5];
 
+    println!("The first number is {}", numbers[0]);
+
+    numbers[2] = 9;
+
+    println!("3rd Number: {}", numbers[2]);
+
+    println!("Array length: {} ", numbers.len());
+
+    let fruits = ["Bananas", "Apples", "Oranges"];
+
+    for fruit in fruits {
+        println!("I like {} ", fruit);
+    }
+
+    // Print entire Array
+
+    println!("Array: {:?}", numbers);
+
+    // Vectors
+    //
+
+    let mut languages = vec!["Python", "Rust", "C"];
+
+    languages[2] = "Typescript";
+
+    println!("Web language: {}", languages[2]);
+
+    //Add elements to a Vectors
+    languages.push("Zig"); // Adds at the end
+    languages.insert(2, "Javascript");
+    println!("All languages: {:?}", languages);
+
+    // Remove items
+
+    languages.pop();
+    languages.remove(2);
+
+    println!("{:?}", languages);
+
+    println!("Vector length:{}", languages.len());
+
+    for language in &languages {
+        println!("My favourite language is {}", language);
+    }
+
+    // Tuples
+
+    let person = ("Brian", 24, true);
+
+    println!("Is mad {}", person.2);
+
+    // Unpacking
+
+    let (_name, age, _is_mad) = person;
+    println!("Age: {}", age);
+
+    //Return a tuple from a Function
+
+    fn get_user() -> (String, u32) {
+        (String::from("Yvonne"), 15)
+    }
+
+    let user = get_user();
+
+    println!("User: {} {} years old", user.0, user.1);
+
+    // Hashmaps
+    let mut capital_cities = HashMap::new();
+
+    capital_cities.insert("Kenya", "Nairobi");
+    capital_cities.insert("Germany", "Berlin");
+    capital_cities.insert("Norway", "Oslo");
+
+    println!("{:?}", capital_cities);
+
+    if let Some(city) = capital_cities.get("Norway") {
+        println!("The capital of Norway is {}", city);
+    } else {
+        println!("Norway is not in the map")
+    }
+
+    capital_cities.insert("England", "London");
+
+    capital_cities.remove("Germany");
 }
