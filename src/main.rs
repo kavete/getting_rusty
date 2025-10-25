@@ -317,4 +317,62 @@ fn main() {
     capital_cities.insert("England", "London");
 
     capital_cities.remove("Germany");
+
+    for (country, city) in &capital_cities {
+        println!("The Capital of {} is {}", country, city);
+    }
+
+    //Structs
+
+    struct Person {
+        name: String,
+        age: u32,
+        is_mad: bool,
+    }
+
+    let mut user = Person {
+        name: String::from("Etevak"),
+        age: 23,
+        is_mad: true,
+    };
+
+    println!("Name is {}", user.name);
+    println!("Age: {}", user.age);
+    println!("Is mad: {}", user.is_mad);
+
+    user.name = String::from("Mr Coy");
+    println!("New name: {}", user.name);
+
+    // Enums
+
+    enum Direction {
+        Up,
+        _Down,
+        _Left,
+        _Right,
+    }
+
+    let my_direction = Direction::Up;
+
+    match my_direction {
+        Direction::Up => println!("Going up"),
+        Direction::_Down => println!("Going Down"),
+        Direction::_Left => println!("Going left"),
+        Direction::_Right => println!("Going Right"),
+    }
+
+    // Enums with data
+
+    enum LoginStatus {
+        Success(String),
+        Error(String),
+    }
+
+    let _result1 = LoginStatus::Success(String::from("Welcome"));
+    let result2 = LoginStatus::Error(String::from("Incorrect password"));
+
+    match result2 {
+        LoginStatus::Success(message) => println!("Success: {}", message),
+        LoginStatus::Error(message) => println!("Error {}", message),
+    }
 }
